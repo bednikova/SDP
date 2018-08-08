@@ -12,16 +12,8 @@ int main()
     t.insert(10);
     t.insert(30);
     t.display();
-    t.remove(20);
-    t.display();
-    t.remove(25);
-    t.display();
-    t.remove(30);
-    t.display();
-
 
     IsBst(&t);
-
 
     return 0;
 }
