@@ -40,36 +40,7 @@ class BinTree
         else
             t->left = insert(x, t->left);
 
-        /*
-        else if(x < t->data)
-            t->left = insert(x, t->left);
-        else if(x > t->data)
-            t->right = insert(x, t->right);
-        */
         return t;
-    }
-
-
-    bool isBinaryNode(node* t)
-    {
-        bool flag = false;
-        if((t->left == NULL) && (t->right == NULL))
-        {
-            flag = true;
-            return true;
-        }
-        else if(t->right->data < t->data)
-            return false;
-        else if(t->left->data > t->data)
-            return false;
-        else
-        {
-            isBinaryNode(t->left);
-            isBinaryNode(t->right);
-        }
-
-
-        return true;
     }
 
     node* findMin(node* t)
@@ -167,19 +138,4 @@ public:
         inorder(root);
         cout << endl;
     }
-
-    void search(int x)
-    {
-        root = find(root, x);
-    }
-
-    void isBST()
-    {
-        if(isBinaryNode(root))
-            cout << "This tree is BST! \n";
-        else
-            cout << "This tree is not BST! \n";
-    }
 };
-
-
