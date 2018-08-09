@@ -5,10 +5,14 @@ BinTree* buildBinTree(bool isBst, int nodes)
 {
     BinTree* t = new BinTree;
 
-    for (int i = 0; i<nodes; i++) {
-        if (isBst) {
+    for (int i = 0; i<nodes; i++)
+    {
+        if (isBst)
+        {
             t->insertBST(rand()%100);
-        } else {
+        }
+        else
+        {
             t->insert(rand()%100);
         }
     }
@@ -17,15 +21,9 @@ BinTree* buildBinTree(bool isBst, int nodes)
 }
 
 bool IsBstImpl(node* node);
-//proverqva dali dadeno dvoichno dyrvo e dvoichno naredeno
 bool IsBst(BinTree *tree)
 {
-    // TODO: implement
-    // tree->display();
-    // node* rootHelp = tree->root;
-    //cout << endl << root->data << "  ";
-    //cout << endl << root->left->data << "  ";
-    if(tree == NULL)
+    if(tree->root == NULL)
         return false;
     return IsBstImpl(tree->root);
 }
@@ -44,7 +42,6 @@ bool IsBstImpl(node* node)
         }
         else
         {
-            //obhojdame dqsnoto poddyrvo
             IsBstImpl(node->right);
         }
 
@@ -57,7 +54,6 @@ bool IsBstImpl(node* node)
         }
         else
         {
-            //obhojdame lqvoto poddyrvo
             IsBstImpl(node->left);
         }
 
@@ -74,6 +70,8 @@ bool IsBstImpl(node* node)
 
     return true;
 }
+
+
 
 //proverqva dali dadeno dvoichno dyrvo e pylno
 bool IsFull()
