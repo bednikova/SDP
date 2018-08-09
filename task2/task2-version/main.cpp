@@ -33,5 +33,27 @@ int main()
     t5->display();
     cout << (IsBst(t5) ? "true" : "false") << endl;
 
+
+
+    cout << "Test function IsFull: " << endl;
+    BinTree* t6 = buildBinTree(true, 7);
+    t6->display();
+    cout << (IsFull(t6) ? "true" : "false") << endl;
+
+
+    BinTree* t7 = buildBinTree(false, 7);
+    t7->display();
+    cout << (IsFull(t7) ? "true" : "false") << endl;
+
+
+    BinTree* t8 = buildBinTree(true, 6);
+    t8->display();
+    cout << (IsFull(t8) ? "true" : "false") << endl;
+
+
+    BinTree* t9 = buildBinTree(false, 6);
+    t9->display();
+    cout << (IsFull(t9) ? "true" : "false") << endl;
+
     return 0;
 }

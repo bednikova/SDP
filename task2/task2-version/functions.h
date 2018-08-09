@@ -72,11 +72,51 @@ bool IsBstImpl(node* node)
 }
 
 
+int heightOfBinTree(node* node)
+{
+    int n, m;
+
+    if(node == NULL)
+        return 0;
+
+    n = heightOfBinTree(node->left);
+    m = heightOfBinTree(node->right);
+
+    if(n == m)
+        return 0;
+
+    return 1;
+
+}
+
+
+bool IsFullImpl(node* node)
+{
+    if(heightOfBinTree(node) == 1)
+        return false;
+
+    if((node != NULL) &&
+       (((node->left == NULL) && (node->right != NULL)) ||
+        ((node->left != NULL) && (node->right == NULL))))
+        return false;
+    else
+    {
+        IsFullImpl(node->left);
+        IsFullImpl(node->right);
+    }
+
+    return true;
+
+}
+
+
 
 //proverqva dali dadeno dvoichno dyrvo e pylno
-bool IsFull()
+bool IsFull(BinTree *tree)
 {
-    // TODO: implement
+    if(tree->root == NULL)
+        return false;
+    return IsFullImpl(tree->root);
 }
 
 //poluchava proizvolno dvoichno dyrvo i go pravi dvoichno naredeno dyrvo
