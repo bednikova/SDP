@@ -1,3 +1,7 @@
+#include <stdlib.h>
+
+using namespace std;
+
 struct Node
 {
     int data;
@@ -8,118 +12,56 @@ struct Node
         this->data = data;
         this->next = next;
     }
-
-    void print()
-    {
-        std::cout << this->data << " ";
-    }
 };
 
-Node *head, *tail;
-
-void createNode(int value)
+void addNode(Node*& list, int data)
 {
-    //Node* temp;
-    Node* temp = new Node(value, NULL);
-    //temp->data = value;
-    //temp->next = NULL;
-
-    if(head == NULL)
-    {
-        head = temp;
-        tail = temp;
-        temp = NULL;
-    }
-    else
-    {
-        tail->next = temp;
-        tail = temp;
+    Node* newNode = new Node(data, NULL);
+    if (list == NULL) {
+        list = newNode;
+    } else {
+        Node* temp = list;
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
     }
 }
 
-void printNodes(Node* headN)
+void addRandomNodes(Node*& list, int nodesCount) 
 {
-    Node* temp = new Node(headN->data, headN->next);
-    //temp = head;
-
-    while(temp != NULL)
-    {
-        //temp->print();
-        std::cout << temp->data << " ";
-        temp = temp->next;
+    for (int i = 0; i < nodesCount; i++) {
+        addNode(list, rand() % 100);
     }
 }
 
-Node *headEven, *tailEven;
-Node *headOdd, *tailOdd;
-Node *xxx;
-void Rearrange()
+void printList(Node* list)
 {
-    Node* temp = new Node(xxx->data, xxx->next);
+    while (list != NULL) {
+        cout << list->data << " ";
+        list = list->next;
+    }
+}
 
-    while(temp != NULL)
-    {
-        if(temp->data % 2 == 0)
-        {
-           //createNode(temp->data, headEven, tailEven);
-            Node* temp1 = new Node(temp->data, NULL);
+void Rearrange(Node* list, Node*& newList)
+{
+    Node* oddList = NULL;
+    Node* evenList = NULL;
 
-
-            if(headEven == NULL)
-            {
-                headEven = temp1;
-                tailEven = temp1;
-                temp1 = NULL;
-            }
-            else
-            {
-                tailEven->next = temp1;
-                tailEven = temp1;
-            }
-
+    // Split list
+    while (list != NULL) {
+        if (list->data % 2 == 0) {
+            addNode(evenList, list->data);
+        } else {
+            addNode(oddList, list->data);
         }
-        else //if(temp->data % 2 != 0)
-        {
-           //createNode(temp->data, headOdd, tailOdd);
-            Node* temp1 = new Node(temp->data, NULL);
-
-
-            if(headOdd == NULL)
-            {
-                headOdd = temp1;
-                tailOdd = temp1;
-                temp1 = NULL;
-            }
-            else
-            {
-                tailOdd->next = temp1;
-                tailOdd = temp1;
-            }
-        }
-        temp = temp->next;
+        list = list->next;
     }
 
-/*
-    Node* tempEven = new Node(headEven->data, headEven->next);
-    while(tempEven != NULL)
-    {
-        head = tempEven;
-        tempEven = tempEven->next;
-        head = head->next;
+    // Link newList
+    newList = evenList;
+    while (evenList->next != NULL) {
+        evenList = evenList->next;
     }
-
-    Node* tempOdd = new Node(headOdd->data, headOdd->next);
-    while(tempOdd != NULL)
-    {
-        head = tempOdd;
-        tempOdd = tempOdd->next;
-        head = head->next;
-    }
-*/
-
-    //head = headEven;
-    tailEven->next = headOdd;  //zalepqm headOdd za tail-a na even
-    //po tozi nachin promenqm spisyka na chetnite :D !!!!
-    head = headEven;
-
+    evenList->next = oddList;
 }
