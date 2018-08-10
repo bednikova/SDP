@@ -240,7 +240,13 @@ bool IsFull(BinTree *tree)
 }
 
 
-void ReduceToBst(BinTree*& tree)
+void ReduceToBstImpl(node* node)
 {
 
+}
+
+void ReduceToBst(BinTree*& tree)
+{
+    if(!IsBst(tree))
+        ReduceToBstImpl(tree->root);
 }
