@@ -120,6 +120,26 @@ BinTree* buildFullBinTreeTest4()
     return t;
 }
 
+
+
+BinTree* buildFullBinTreeTest5()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(50);
+    t->insertBST(30);
+    t->insertBST(10);
+    t->insertBST(5);
+    t->insertBST(20);
+    t->insertBST(70);
+    t->insertBST(90);
+    t->insertBST(80);
+    t->insertBST(100);
+
+
+    return t;
+}
 bool IsBstImpl(node* node);
 bool IsBst(BinTree *tree)
 {
@@ -183,44 +203,35 @@ int heightOfBinTree(node* node)
     m = heightOfBinTree(node->right);
 
     if(n > m)
-        return n+1;
-
-    return m+1;
-
+        return n + 1;
+    return m + 1;
 }
 
 
 bool IsFullImpl(node* node)
 {
 
-    if((node == NULL) || ((node->left == NULL) && (node->right == NULL)))
+    if(heightOfBinTree(node->left) != heightOfBinTree(node->right))
+    {
+        return false;
+    }
+    else if((node == NULL) || ((node->left == NULL) && (node->right == NULL)))
     {
         return true;
     }
-    else if(heightOfBinTree(node->left) != heightOfBinTree(node->right))
+    else if(((node->left == NULL) && (node->right != NULL)) ||
+            ((node->left != NULL) && (node->right == NULL)))
     {
-        cout << "Height leftTree != height rightTree! \n";
         return false;
     }
-    else if(((node->left == NULL) && (node->right != NULL)) ||
-        ((node->left != NULL) && (node->right == NULL)))
-       {
-           cout << "leftTree or rightTree is a empty tree \n";
-            return false;
-       }
     else
     {
         IsFullImpl(node->left);
         IsFullImpl(node->right);
     }
-
-    return true;
-
 }
 
 
-
-//proverqva dali dadeno dvoichno dyrvo e pylno
 bool IsFull(BinTree *tree)
 {
     if(tree->root == NULL)
@@ -228,8 +239,8 @@ bool IsFull(BinTree *tree)
     return IsFullImpl(tree->root);
 }
 
-//poluchava proizvolno dvoichno dyrvo i go pravi dvoichno naredeno dyrvo
-bool ReduceToBst()
+
+void ReduceToBst(BinTree*& tree)
 {
-    // TODO: implement
+
 }

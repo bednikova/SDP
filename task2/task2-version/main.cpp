@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    /*
     BinTree* t = buildBinTree(true, 10);
     t->display();
     cout << (IsBst(t) ? "true" : "false") << endl;
@@ -32,35 +33,10 @@ int main()
     BinTree* t5 = buildBinTree(false, 1);
     t5->display();
     cout << (IsBst(t5) ? "true" : "false") << endl;
-
+    */
 
 
     cout << "Test function IsFull: " << endl;
-    /*
-    BinTree* t6 = buildBinTree(true, 7);
-    t6->display();
-    cout << (IsFull(t6) ? "true" : "false") << endl;
-
-
-    BinTree* t7 = buildBinTree(false, 7);
-    t7->display();
-    cout << (IsFull(t7) ? "true" : "false") << endl;
-
-
-    BinTree* t8 = buildBinTree(true, 6);
-    t8->display();
-    cout << (IsFull(t8) ? "true" : "false") << endl;
-
-
-    BinTree* t9 = buildBinTree(false, 6);
-    t9->display();
-    cout << (IsFull(t9) ? "true" : "false") << endl;
-
-    BinTree* t10 = buildBinTree(false, 9);
-    t10->display();
-    cout << (IsFull(t10) ? "true" : "false") << endl;
-    */
-
 
     BinTree* fullTree = buildFullBinTree();
     fullTree->display();
@@ -111,5 +87,13 @@ int main()
     cout << "IsFull: " << (IsFull(test4) ? "true" : "false") << endl;
     cout << "IsBst: " << (IsBst(test4) ? "true" : "false") << endl;
 
+
+
+    cout << "test5: " << endl;
+    BinTree* test5 = buildFullBinTreeTest5();
+    test5->display();
+    cout << "root: " << test5->root->data << endl;
+    cout << "IsFull: " << (IsFull(test5) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(test5) ? "true" : "false") << endl;
     return 0;
 }
