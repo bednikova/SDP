@@ -36,6 +36,7 @@ int main()
 
 
     cout << "Test function IsFull: " << endl;
+    /*
     BinTree* t6 = buildBinTree(true, 7);
     t6->display();
     cout << (IsFull(t6) ? "true" : "false") << endl;
@@ -54,6 +55,61 @@ int main()
     BinTree* t9 = buildBinTree(false, 6);
     t9->display();
     cout << (IsFull(t9) ? "true" : "false") << endl;
+
+    BinTree* t10 = buildBinTree(false, 9);
+    t10->display();
+    cout << (IsFull(t10) ? "true" : "false") << endl;
+    */
+
+
+    BinTree* fullTree = buildFullBinTree();
+    fullTree->display();
+    cout << "IsFull: " << (IsFull(fullTree) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(fullTree) ? "true" : "false") << endl;
+
+
+    BinTree* t8 = buildBinTree(true, 3);
+    t8->display();
+    cout << "IsFull: " << (IsFull(t8) ? "true" : "false") << endl;
+    cout << "root " << t8->root->data << endl;
+    cout << "IsBst: " << (IsBst(t8) ? "true" : "false") << endl;
+
+    BinTree* t9 = buildBinTree(false, 3);
+    t9->display();
+    cout << "IsFull: " << (IsFull(t9) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(t9) ? "true" : "false") << endl;
+
+
+    //test
+    cout << "test1: " << endl;
+    BinTree* test1 = buildFullBinTreeTest1();
+    test1->display();
+    cout << "root: " << test1->root->data << endl;
+    cout << "IsFull: " << (IsFull(test1) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(test1) ? "true" : "false") << endl;
+
+    cout << "test2: " << endl;
+    BinTree* test2 = buildFullBinTreeTest2();
+    test2->display();
+    cout << "root: " << test2->root->data << endl;
+    cout << "IsFull: " << (IsFull(test2) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(test2) ? "true" : "false") << endl;
+
+
+    cout << "test3: " << endl;
+    BinTree* test3 = buildFullBinTreeTest3();
+    test3->display();
+    cout << "root: " << test3->root->data << endl;
+    cout << "IsFull: " << (IsFull(test3) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(test3) ? "true" : "false") << endl;
+
+
+    cout << "test4: " << endl;
+    BinTree* test4 = buildFullBinTreeTest4();
+    test4->display();
+    cout << "root: " << test4->root->data << endl;
+    cout << "IsFull: " << (IsFull(test4) ? "true" : "false") << endl;
+    cout << "IsBst: " << (IsBst(test4) ? "true" : "false") << endl;
 
     return 0;
 }

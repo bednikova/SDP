@@ -20,6 +20,106 @@ BinTree* buildBinTree(bool isBst, int nodes)
     return t;
 }
 
+
+BinTree* buildFullBinTree()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(4);
+    t->insertBST(2);
+    t->insertBST(6);
+    t->insertBST(5);
+    t->insertBST(3);
+    t->insertBST(7);
+    t->insertBST(1);
+
+
+    return t;
+}
+
+
+
+
+BinTree* buildFullBinTreeTest1()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(3);
+    t->insertBST(1);
+    t->insertBST(0);
+    t->insertBST(2);
+    t->insertBST(5);
+    t->insertBST(4);
+    t->insertBST(9);
+    t->insertBST(6);
+    t->insertBST(10);
+
+
+    return t;
+}
+
+
+BinTree* buildFullBinTreeTest2()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(5);
+    t->insertBST(3);
+    t->insertBST(2);
+    t->insertBST(4);
+    t->insertBST(10);
+    t->insertBST(8);
+    t->insertBST(6);
+    t->insertBST(9);
+    t->insertBST(11);
+
+
+    return t;
+}
+
+
+BinTree* buildFullBinTreeTest3()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(10);
+    t->insertBST(3);
+    t->insertBST(2);
+    t->insertBST(5);
+    t->insertBST(4);
+    t->insertBST(6);
+    t->insertBST(15);
+    t->insertBST(11);
+    t->insertBST(16);
+
+
+    return t;
+}
+
+
+BinTree* buildFullBinTreeTest4()
+{
+
+    BinTree* t = new BinTree;
+
+    t->insertBST(6);
+    t->insertBST(5);
+    t->insertBST(1);
+    t->insertBST(2);
+    t->insertBST(0);
+    t->insertBST(4);
+    t->insertBST(7);
+    t->insertBST(8);
+    t->insertBST(9);
+
+
+    return t;
+}
+
 bool IsBstImpl(node* node);
 bool IsBst(BinTree *tree)
 {
@@ -82,23 +182,32 @@ int heightOfBinTree(node* node)
     n = heightOfBinTree(node->left);
     m = heightOfBinTree(node->right);
 
-    if(n == m)
-        return 0;
+    if(n > m)
+        return n+1;
 
-    return 1;
+    return m+1;
 
 }
 
 
 bool IsFullImpl(node* node)
 {
-    if(heightOfBinTree(node) == 1)
-        return false;
 
-    if((node != NULL) &&
-       (((node->left == NULL) && (node->right != NULL)) ||
-        ((node->left != NULL) && (node->right == NULL))))
+    if((node == NULL) || ((node->left == NULL) && (node->right == NULL)))
+    {
+        return true;
+    }
+    else if(heightOfBinTree(node->left) != heightOfBinTree(node->right))
+    {
+        cout << "Height leftTree != height rightTree! \n";
         return false;
+    }
+    else if(((node->left == NULL) && (node->right != NULL)) ||
+        ((node->left != NULL) && (node->right == NULL)))
+       {
+           cout << "leftTree or rightTree is a empty tree \n";
+            return false;
+       }
     else
     {
         IsFullImpl(node->left);
