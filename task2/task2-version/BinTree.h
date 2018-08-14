@@ -33,9 +33,12 @@ class BinTree
         bool IsFullImpl(node* node);
         bool IsBstImpl(node* node);
 
+        node* getRoot();
+
         node* root;
 
     private:
+
         void inorder(node* t);
 
         node* find(node* t, int x);

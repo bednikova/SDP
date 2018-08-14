@@ -69,17 +69,17 @@ BinTree* buildTestNotFullBinTree()
 
 bool IsBst(BinTree *tree)
 {
-    if(tree->root == NULL)
+    if(tree->getRoot() == NULL)
         return false;
-    return tree->IsBstImpl(tree->root);
+    return tree->IsBstImpl(tree->getRoot());
 }
 
 
 bool IsFull(BinTree *tree)
 {
-    if(tree->root == NULL)
+    if(tree->getRoot() == NULL)
         return false;
-    return tree->IsFullImpl(tree->root);
+    return tree->IsFullImpl(tree->getRoot());
 }
 
 

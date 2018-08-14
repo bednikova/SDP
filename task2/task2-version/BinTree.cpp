@@ -1,5 +1,11 @@
 #include "BinTree.h"
 
+
+node* BinTree::getRoot()
+{
+    return this->root;
+}
+
 BinTree::BinTree()
 {
     root = NULL;
