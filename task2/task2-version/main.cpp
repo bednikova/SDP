@@ -17,6 +17,8 @@ int main()
     cout << "ReduceToBst: " << endl;
     cout << endl;
     ReduceToBst(test2);
+
+    cout << endl << "Final tree \n";
     test2->displayTree();
 
 
