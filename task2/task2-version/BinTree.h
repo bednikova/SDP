@@ -46,7 +46,7 @@ class BinTree
 
 
         node* Delete(node *root, int data);
-        int FindMax(node *root);
+        int FindMaxBinaryTree(node* root);
 
 };
 
@@ -233,10 +233,28 @@ node* BinTree::findMaxNode(node* t)
 
 void BinTree::ReduceToBstImpl(node*& node)
 {
+    if(node->left == NULL && node->left == NULL)
+    {
+        return;
+    }
+    else if(node == NULL)
+    {
+        return;
+    }
     if(node->left->data > node->data)
     {
         //node = findMaxNode(node->left);
-
+        Delete(node, node->data);
+    }
+    else if(node->right->data < node->data)
+    {
+        //node = findMaxNode(node->left);
+        Delete(node, node->data);
+    }
+    else
+    {
+        ReduceToBstImpl(node->left);
+        ReduceToBstImpl(node->right);
     }
 
 }
@@ -372,24 +390,30 @@ node* BinTree::Delete(node *root, int data)
      else
      {
         //node *temp = FindMin(root->left); // find minimal value of right sub tree
-        root->data = FindMax(root->left);  // duplicate the node
-        root->left = Delete(root->left, FindMax(root->left)); // delete the duplicate node
+        root->data = FindMaxBinaryTree(root->left);  // duplicate the node
+        root->left = Delete(root->left, FindMaxBinaryTree(root->left)); // delete the duplicate node
      }
   }
   return root; // parent node can update reference
 }
 
 
-
-int BinTree::FindMax(node *root)
+// Returns maximum value in a given Binary Tree
+int BinTree::FindMaxBinaryTree(node* root)
 {
-   if (root == NULL)
-   {
-      return NULL;//INT_MAX; // or undefined.
-   }
-   if (root->left != NULL)
-   {
-      return FindMax(root->left); // left tree is smaller
-   }
-   return root->data;
+    // Base case
+    if (root == NULL)
+      return 0; //INT_MIN;
+
+    // Return maximum of 3 values:
+    // 1) Root's data 2) Max in Left Subtree
+    // 3) Max in right subtree
+    int res = root->data;
+    int lres = FindMaxBinaryTree(root->left);
+    int rres = FindMaxBinaryTree(root->right);
+    if (lres > res)
+      res = lres;
+    if (rres > res)
+      res = rres;
+    return res;
 }
