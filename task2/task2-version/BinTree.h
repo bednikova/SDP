@@ -46,7 +46,7 @@ class BinTree
 
 
         node* Delete(node *root, int data);
-        int FindMin(node *root);
+        int FindMax(node *root);
 
 };
 
@@ -235,7 +235,8 @@ void BinTree::ReduceToBstImpl(node*& node)
 {
     if(node->left->data > node->data)
     {
-        node = findMaxNode(node->left);
+        //node = findMaxNode(node->left);
+
     }
 
 }
@@ -332,13 +333,23 @@ node* BinTree::Delete(node *root, int data)
   {
       return NULL;
   }
-  if (data < root->data)
+  /*
+  if (data < root->data && this->IsBstImpl(root))
   {
       // data is in the left sub tree.
       root->left = Delete(root->left, data);
   }
-  else if (data > root->data)
+  else if(data > root->data && this->IsBstImpl(root))
   {
+      // data is in the right sub tree.
+      root->right = Delete(root->right, data);
+  }
+  */
+  //else
+  if (data != root->data)
+  {
+      // data is in the left sub tree.
+      root->left = Delete(root->left, data);
       // data is in the right sub tree.
       root->right = Delete(root->right, data);
   }
@@ -357,19 +368,12 @@ node* BinTree::Delete(node *root, int data)
         root = root->right;
         delete temp;
      }
-     // case 3: one child (left)
-     else if (root->right == NULL)
-     {
-        node *temp = root; // save current node as a backup
-        root = root->left;
-        delete temp;
-     }
-     // case 4: two children
+     // case 3: two children or one child (left)
      else
      {
-        //node *temp = FindMin(root->right); // find minimal value of right sub tree
-        root->data = FindMin(root->right); // temp->data; // duplicate the node
-        root->right = Delete(root->right, FindMin(root->right));// temp->data); // delete the duplicate node
+        //node *temp = FindMin(root->left); // find minimal value of right sub tree
+        root->data = FindMax(root->left);  // duplicate the node
+        root->left = Delete(root->left, FindMax(root->left)); // delete the duplicate node
      }
   }
   return root; // parent node can update reference
@@ -377,7 +381,7 @@ node* BinTree::Delete(node *root, int data)
 
 
 
-int BinTree::FindMin(node *root)
+int BinTree::FindMax(node *root)
 {
    if (root == NULL)
    {
@@ -385,7 +389,7 @@ int BinTree::FindMin(node *root)
    }
    if (root->left != NULL)
    {
-      return FindMin(root->left); // left tree is smaller
+      return FindMax(root->left); // left tree is smaller
    }
    return root->data;
 }
