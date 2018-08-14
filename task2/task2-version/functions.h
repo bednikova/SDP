@@ -73,6 +73,6 @@ bool IsFull(BinTree *tree)
 
 void ReduceToBst(BinTree*& tree)
 {
-    if(!IsBst(tree))
+    while(!IsBst(tree))
         tree->ReduceToBstImpl(tree->root);
 }
