@@ -15,7 +15,7 @@ int main()
     Node* newList = NULL;
     Rearrange(list, newList);
 
-    cout << "Rearranged List: ";
+    cout << "\nRearranged List: ";
     printList(newList);
     cout << endl;
 
