@@ -301,7 +301,6 @@ int BinTree::heightOfBinTree(node* node)
 }
 
 
-
 bool BinTree::IsBstImpl(node* node)
 {
 
