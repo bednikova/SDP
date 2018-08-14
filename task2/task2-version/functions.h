@@ -36,7 +36,7 @@ BinTree* buildFullBinTree()
     return t;
 }
 
-BinTree* buildTesFullBinTree()
+BinTree* buildTestNotFullBinTree()
 {
 
     BinTree* t = new BinTree;
@@ -73,13 +73,86 @@ bool IsFull(BinTree *tree)
 
 void ReduceToBst(BinTree*& tree)
 {
-    int i = 1;
+    //int i = 1;
     while(!IsBst(tree))
     {
         tree->ReduceToBstImpl(tree->root);
-        cout << "step " << i << endl;
-        tree->displayTree();
-        cout << endl << endl;
-        ++i;
+        //cout << "Step " << i << endl;
+        //tree->displayTree();
+        //cout << endl << endl;
+        //++i;
     }
+}
+
+void test1IsBstTree()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 1: " << endl;
+    BinTree* testBinTree = buildBinTree(true, 6);
+    cout << "Tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nIsBst: " << (IsBst(testBinTree) ? "true" : "false" ) << endl;
+    cout << "-------------------------------------------------------------\n";
+}
+
+void test2IsBstTree()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 2: function IsBst()" << endl;
+    BinTree* testBinTree = buildBinTree(false, 6);
+    cout << "Tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nIsBst: " << (IsBst(testBinTree) ? "true" : "false" ) << endl;
+    cout << "-------------------------------------------------------------\n";
+}
+
+
+void test1IsFullTree()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 1: function IsFull() " << endl;
+    BinTree* testBinTree = buildFullBinTree();
+    cout << "Tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nIsFull: " << (IsFull(testBinTree) ? "true" : "false") << endl;
+    cout << "-------------------------------------------------------------\n";
+}
+
+void test2IsFullTree()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 2: function IsFull()" << endl;
+    BinTree* testBinTree = buildTestNotFullBinTree();
+    cout << "Tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nIsFull: " << (IsFull(testBinTree) ? "true" : "false") << endl;
+    cout << "-------------------------------------------------------------\n";
+}
+
+void test1FunctionReduceToBst()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 1: function ReduceToBst()" << endl;
+    BinTree* testBinTree = buildBinTree(false, 7);
+    cout << "Original tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nReduceToBst: " << endl;
+    ReduceToBst(testBinTree);
+    cout << "\n\n\nFinal tree: \n\n\n";
+    testBinTree->displayTree();
+    cout << "-------------------------------------------------------------\n";
+}
+
+void test2FunctionReduceToBst()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 2: function ReduceToBst()" << endl;
+    BinTree* testBinTree = buildBinTree(false, 7);
+    cout << "Original tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nReduceToBst: " << endl;
+    ReduceToBst(testBinTree);
+    cout << "\n\n\nFinal tree: \n\n\n";
+    testBinTree->displayTree();
+    cout << "-------------------------------------------------------------\n";
 }
