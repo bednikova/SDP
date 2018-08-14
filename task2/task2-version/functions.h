@@ -50,6 +50,18 @@ BinTree* buildTestNotFullBinTree()
     t->insertBST(90);
     t->insertBST(80);
     t->insertBST(100);
+    t->insertBST(40);
+    t->insertBST(60);
+    t->insertBST(55);
+    t->insertBST(41);
+    t->insertBST(39);
+
+
+    /* added node -> tree is full
+    //t->insertBST(41);
+    t->insertBST(61);
+    //t->insertBST(39);
+    */
 
     return t;
 }
@@ -138,7 +150,7 @@ void test1FunctionReduceToBst()
     testBinTree->displayTree();
     cout << "\n\n\nReduceToBst: " << endl;
     ReduceToBst(testBinTree);
-    cout << "\n\n\nFinal tree: \n\n\n";
+    cout << "Final tree: \n\n\n";
     testBinTree->displayTree();
     cout << "-------------------------------------------------------------\n";
 }
@@ -152,7 +164,22 @@ void test2FunctionReduceToBst()
     testBinTree->displayTree();
     cout << "\n\n\nReduceToBst: " << endl;
     ReduceToBst(testBinTree);
-    cout << "\n\n\nFinal tree: \n\n\n";
+    cout << "Final tree: \n\n\n";
+    testBinTree->displayTree();
+    cout << "-------------------------------------------------------------\n";
+}
+
+
+void test3FunctionReduceToBst()
+{
+    cout << "-------------------------------------------------------------\n";
+    cout << "Test 3: function ReduceToBst()" << endl;
+    BinTree* testBinTree = buildBinTree(true, 7);
+    cout << "Original tree is: \n\n\n";
+    testBinTree->displayTree();
+    cout << "\n\n\nReduceToBst: " << endl;
+    ReduceToBst(testBinTree);
+    cout << "Final tree: \n\n\n";
     testBinTree->displayTree();
     cout << "-------------------------------------------------------------\n";
 }

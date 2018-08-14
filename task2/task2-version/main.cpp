@@ -17,6 +17,7 @@ int main()
     //test ReduceToBst() function
     test1FunctionReduceToBst();
     test2FunctionReduceToBst();
+    test3FunctionReduceToBst();
 
     return 0;
 }

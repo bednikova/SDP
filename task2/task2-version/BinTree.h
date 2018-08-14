@@ -210,6 +210,8 @@ node* BinTree::insert(int x, node* t)
         t->data = x;
         t->left = t->right = NULL;
     }
+    else if(x == t->data)
+        return t;
     else if(t->left == NULL)
         t->left = insert(x, t->left);
     else if(t->right == NULL)
@@ -262,7 +264,6 @@ void BinTree::ReduceToBstImpl(node*& node)
 
 bool BinTree::IsFullImpl(node* node)
 {
-
     if(heightOfBinTree(node->left) != heightOfBinTree(node->right))
     {
         return false;
@@ -278,8 +279,7 @@ bool BinTree::IsFullImpl(node* node)
     }
     else
     {
-        IsFullImpl(node->left);
-        IsFullImpl(node->right);
+        return (IsFullImpl(node->left) && IsFullImpl(node->right)) ? true : false;
     }
 }
 
@@ -287,7 +287,7 @@ bool BinTree::IsFullImpl(node* node)
 
 int BinTree::heightOfBinTree(node* node)
 {
-    int n, m;
+    int n = 0, m = 0;
 
     if(node == NULL)
         return 0;
@@ -296,14 +296,15 @@ int BinTree::heightOfBinTree(node* node)
     m = heightOfBinTree(node->right);
 
     if(n > m)
-        return n + 1;
-    return m + 1;
+        return n+1;
+    return m+1;
 }
 
 
 
 bool BinTree::IsBstImpl(node* node)
 {
+
     if((node == NULL) || ((node->left == NULL) && (node->right == NULL)))
     {
         return true;
@@ -340,6 +341,8 @@ bool BinTree::IsBstImpl(node* node)
     {
         return (IsBstImpl(node->left) && IsBstImpl(node->right)) ? true : false;
     }
+
+
 }
 
 
