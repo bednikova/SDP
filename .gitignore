@@ -3,3 +3,4 @@ task2/task2-version/task2/bin/Release/task2.exe
 task2/task2-version/task2/obj/Release/main.o
 task2/task2-version/task2/task2.depend
 task2/task2-version/task2/task2.cbp
+task2/task2-version/task2/obj/Release/BinTree.o
