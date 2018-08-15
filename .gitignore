@@ -6,3 +6,5 @@ task2/task2-version/task2/task2.cbp
 task2/task2-version/task2/obj/Release/BinTree.o
 task1/task1/task1.depend
 JSON-Parser/JSON/JSON.cbp
+JSON-Parser/JSON/obj/Release/main.o
+JSON-Parser/JSON/bin/Release/JSON.exe
