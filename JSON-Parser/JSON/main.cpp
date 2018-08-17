@@ -18,6 +18,9 @@ int main()
         cout << "\nFile " << fileName << " is a not valid JSON!\n";
     }
 
+    if(isString("\"212 555-1234\"4"))
+        cout << "t\n";
+    cout << "f\n";
 
 
 

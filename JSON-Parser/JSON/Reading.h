@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool helpReadAndValidate(char* fileName);
+
 bool ReadAndValidationJSONFile(char* fileName)
 {
     bool flag = true;
@@ -28,7 +30,7 @@ bool ReadAndValidationJSONFile(char* fileName)
             else
             {
                 flag = false;
-                cout << "\nNot valid json object\n";
+                //cout << "\nNot valid json object\n";
             }
         }
     }
@@ -57,11 +59,48 @@ bool ReadAndValidationJSONFile(char* fileName)
     }
     else if(flag == false)
     {
-        cout << "Content is not json object!\n";
-        return false;
+        if(helpReadAndValidate(fileName))
+        {
+            return true;
+        }
+        else
+        {
+            cout << "\nContent is not json object!\n";
+            return false;
+        }
     }
     else
         return true;
+}
+
+
+bool helpReadAndValidate(char* fileName)
+{
+    ifstream myFile(fileName);
+
+    if(myFile)
+    {
+        char buff[1024];
+        while(myFile.getline(buff, 1024))
+        {
+            char* row = new char[strlen(buff)+1];
+            strcpy(row, buff);
+
+            if(!(isString(row) || isSymbol(Trim(row)) || isNumber(Trim(row))))
+            {
+                cout << "\nNot valid type data! ( " << Trim(row)  << " )" << endl;
+                cout << (isNumber(Trim(row)) ? "true" : "false") << endl;
+                return false;
+            }
+            cout << row << endl;
+
+        }
+    }
+
+    myFile.close();
+
+    return true;
+
 }
 
 
@@ -83,3 +122,8 @@ void ReadJSONFileAndCreateJSONObject(char* fileName)
 
     myFile.close();
 }
+
+
+
+
+
