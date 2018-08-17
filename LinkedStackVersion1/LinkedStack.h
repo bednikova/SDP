@@ -1,39 +1,32 @@
-#ifndef __LINKEDLIST_H__
-#define __LINKEDLIST_H__
+#ifndef __LINKEDSTACK_H__
+#define __LINKEDSTACK_H__
 
 template <class T>
-class LinkedList
+class LinkedStack
 {
     public:
-        LinkedList() : tos(NULL) {}
+        LinkedStack() : tos(NULL) {}
 
-        LinkedList(const LinkedList& list)
+        LinkedStack(const LinkedStack& l)
         {
-            tos = list.tos;
+            tos = l.tos;
         }
 
-        LinkedList& operator=(const LinkedList& list)
+        LinkedStack& operator=(const LinkedStack& l)
         {
-            if(this != &list)
+            if(this != &l)
             {
-                tos = list.tos;
+                tos = l.tos;
             }
-
             return *this;
         }
 
-        ~LinkedList()
+        ~LinkedStack()
         {
             while(!isEmpty())
             {
                 pop();
             }
-        }
-
-        void push(const T& element)
-        {
-            Node* node = new Node(element, tos);
-            tos = node;
         }
 
         void pop()
@@ -43,6 +36,12 @@ class LinkedList
             delete node;
         }
 
+        void push(const T& element)
+        {
+            Node* node = new Node(element, tos);
+            tos = node;
+        }
+
         const T& top() const
         {
             return tos->data;
@@ -50,7 +49,7 @@ class LinkedList
 
         bool isEmpty() const
         {
-            return !tos;
+            return tos == NULL;
         }
     private:
 

@@ -1,11 +1,11 @@
 #include <iostream>
-#include "LinkedList.h"
+#include "LinkedStack.h"
 
 using namespace std;
 
 int main()
 {
-    LinkedList<int> linkedStack;
+    LinkedStack<int> linkedStack;
     linkedStack.push(1);
     linkedStack.push(5);
 
