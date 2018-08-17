@@ -14,3 +14,4 @@ StackVersion2/bin/Release/StackVersion2.exe
 *.exe
 *.o
 *.depend
+*.layout
