@@ -9,3 +9,8 @@ JSON-Parser/JSON/JSON.cbp
 JSON-Parser/JSON/obj/Release/main.o
 JSON-Parser/JSON/bin/Release/JSON.exe
 JSON-Parser/JSON/JSON.depend
+StackVersion2/bin/Release/StackVersion2.exe
+*.cbp
+*.exe
+*.o
+*.depend
