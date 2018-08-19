@@ -15,3 +15,4 @@ StackVersion2/bin/Release/StackVersion2.exe
 *.o
 *.depend
 *.layout
+*.cbTemp
