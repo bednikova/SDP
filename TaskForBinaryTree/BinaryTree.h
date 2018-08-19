@@ -1,4 +1,8 @@
 #include <iostream>
+
+using namespace std;
+
+
 #ifndef __BINARYTREE_H__
 #define __BINARYTREE_H__
 
@@ -12,49 +16,61 @@ class BinaryTree
             root = makeEmpty(root);
         }
 
-        int accumTreeImpl()
+
+        void insertBst(int x)
         {
-            int sum = 0;
-
-            if(root == NULL)
-                return sum;
-            else
-            {
-                if(!root->left && !root->right)
-                {
-                    return sum + root->data;
-                }
-                else if(root->left && !root->right)
-                {
-                    sum += accumTreeImpl(root->left);
-                }
-                else if(!root->left && root->right)
-                {
-                    sum += accumTreeImpl(root->right);
-                }
-                else
-                {
-                    sum += accumTreeImpl(root->right) + accumTreeImpl(root->left);
-                }
-            }
-
-            return sum;
+            root = insertBst(x, root);
         }
 
-
-        void insert(int x, bool flagTree)
+        void display()
         {
-
-
+            inorder(root);
+            cout << endl;
         }
 
     private:
 
         struct Node;
 
+        void inorder(Node* r)
+        {
+            if(r == NULL)
+                return;
+            inorder(r->left);
+            cout << r->data << " ";
+            inorder(r->right);
+        }
+
+
+        Node* insertBst(int x, Node* t)
+        {
+            if(t == NULL)
+            {
+                t = new Node;
+                t->data = x;
+                t->left = t->right = NULL;
+
+            }
+            else if(x < t->data)
+                t->left = insertBst(x, t->left);
+            else if(x > t->data)
+                t->right = insertBst(x, t->right);
+            else
+                return t;
+        }
+
         Node* makeEmpty(Node* t)
         {
+            if(t == NULL)
+                return NULL;
+            else
+            {
+                makeEmpty(t->left);
+                makeEmpty(t->right);
+                delete t;
+            }
 
+            return NULL;
         }
 
     private:

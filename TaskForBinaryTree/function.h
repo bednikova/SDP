@@ -2,8 +2,8 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
+//using namespace std;
+/*
 void readTree(char* fileName)
 {
     ifstream myFile(fileName);
@@ -37,9 +37,11 @@ void readTree(char* fileName)
     myFile.close();
 }
 
-
+*/
+/*
 
 int accumTree(BinaryTree* tree)
 {
-    return tree->accumTreeImpl();
+    return tree->accumTreeImpll();
 }
+*/
